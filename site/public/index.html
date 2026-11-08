@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b3d91">
+<meta name="robots" content="noindex,nofollow">
+<title>Mobile King – Branch Daily Report</title>
+<style>
+:root{--bg:#f4f6fa;--card:#fff;--ink:#1c2330;--muted:#6b7586;--line:#e3e7ee;--brand:#0b3d91;--brand2:#1565c0;--ok:#1e8e3e;--warn:#e8a200;--bad:#d93025;--soft:#eef3fb}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Pyidaungsu","Myanmar Text","Noto Sans Myanmar",system-ui,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;padding-bottom:env(safe-area-inset-bottom)}
+header{background:linear-gradient(90deg,#0b3d91,#1565c0);color:#fff;padding:12px 14px;padding-top:max(12px,env(safe-area-inset-top))}
+header h1{font-size:17px;margin:0}
+.hrow{display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap;font-size:14px}
+.hrow input{padding:7px 8px;border-radius:8px;border:0;font:inherit;font-size:16px}
+.hrow button{background:rgba(255,255,255,.18);color:#fff;border:0;border-radius:8px;padding:7px 10px;font:inherit;font-size:13px}
+nav{background:#fff;border-bottom:1px solid var(--line);display:flex;overflow-x:auto;position:sticky;top:0;z-index:5;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{flex:1 0 auto;background:none;border:0;padding:13px 12px;font:inherit;font-size:15px;color:var(--muted);border-bottom:3px solid transparent;white-space:nowrap}
+nav button.active{color:var(--brand);border-bottom-color:var(--brand);font-weight:600}
+main{padding:12px;max-width:760px;margin:0 auto}
+.tab{display:none}.tab.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+.card h2{font-size:16px;margin:0 0 10px;color:var(--brand)}
+.target{background:var(--soft);border-radius:10px;padding:10px;text-align:center}
+.target b{font-size:26px;color:var(--brand)}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:14px;color:#3b4658;margin-bottom:4px;font-weight:600}
+.field small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+.stepper{display:flex;align-items:stretch;gap:6px}
+.stepper button{width:52px;border:1px solid #cfd6e2;background:#fff;border-radius:10px;font-size:24px;color:var(--brand);font-weight:700}
+.stepper button:active{background:var(--soft)}
+.stepper input{flex:1;min-width:0;text-align:center;font-size:22px;font-weight:700;padding:10px;border:1px solid #cfd6e2;border-radius:10px;color:var(--ink)}
+textarea{width:100%;padding:10px;border:1px solid #cfd6e2;border-radius:10px;font:inherit;font-size:16px;min-height:76px;resize:vertical;color:var(--ink)}
+input:focus,textarea:focus{outline:2px solid var(--brand2);outline-offset:1px}
+.btn{display:block;width:100%;background:var(--brand);color:#fff;border:0;border-radius:12px;padding:14px;font:inherit;font-size:16px;font-weight:600;margin-top:8px}
+.btn.sec{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+.btn:disabled{opacity:.6}
+.sticky{position:sticky;bottom:0;background:linear-gradient(transparent,var(--bg) 30%);padding:10px 0 calc(6px + env(safe-area-inset-bottom))}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--soft);color:#33415c}
+.task{display:flex;gap:12px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line);cursor:pointer;user-select:none}
+.task input{width:26px;height:26px;flex:none;accent-color:var(--ok)}
+.task.done span{color:var(--muted);text-decoration:line-through}
+.pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:12px;font-weight:600}
+.p-ok{background:#e6f4ea;color:var(--ok)}.p-bad{background:#fce8e6;color:var(--bad)}.p-warn{background:#fff4d6;color:#a06d00}
+.bar{background:#edf0f5;border-radius:6px;height:12px;overflow:hidden}.bar>span{display:block;height:100%;background:var(--ok);transition:width .3s}
+.muted{color:var(--muted);font-size:13px}
+.pillar{border-left:4px solid var(--brand2);padding-left:10px;margin-bottom:10px}
+ul,ol{margin:4px 0;padding-left:20px}
+#sync{font-size:12px;opacity:.95}
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.login .card{width:100%;max-width:380px;text-align:center}
+.login input{width:100%;font-size:26px;letter-spacing:6px;text-align:center;padding:12px;border:1px solid #cfd6e2;border-radius:12px;margin:12px 0 4px}
+.err{color:var(--bad);font-size:14px;min-height:20px}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:#1c2330;color:#fff;padding:11px 18px;border-radius:10px;opacity:0;transition:.3s;z-index:20;pointer-events:none;max-width:90%;text-align:center}
+.toast.show{opacity:1}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<!-- LOGIN -->
+<div class="login" id="loginView">
+  <div class="card">
+    <div style="font-size:40px">📱</div>
+    <h2 style="margin:4px 0">Mobile King</h2>
+    <div class="muted">Branch In-charge Daily Report</div>
+    <input type="password" id="pin" inputmode="numeric" autocomplete="current-password" placeholder="PIN" maxlength="20">
+    <div class="err" id="loginErr"></div>
+    <button class="btn" id="btnLogin">ဝင်မည်</button>
+    <p class="muted">PIN ကို GM ထံမှ ရယူပါ။</p>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="appView" class="hidden">
+<header>
+  <h1>📱 <span id="hBranch"></span></h1>
+  <div class="hrow"><span>👤 <b id="hName"></b></span><span id="sync"></span></div>
+  <div class="hrow"><span>ရက်စွဲ</span><input type="date" id="selDate"><button id="btnLogout" style="margin-left:auto">Logout</button></div>
+</header>
+<nav id="nav">
+  <button data-tab="rep" class="active">📝 Report</button>
+  <button data-tab="chk">✅ Checklist</button>
+  <button data-tab="sch">📅 Schedule</button>
+  <button data-tab="trn">🎓 Training</button>
+</nav>
+<main>
+<section class="tab active" id="tab-rep">
+  <div class="card">
+    <div class="target">Today's Sales Target<br><b id="tgt"></b> <span class="muted">Lakh MMK</span></div>
+    <p class="muted" style="margin-bottom:0">Sales နှင့် ပတ်သက်သည်များကို POS မှ GM က ယူမည်။ ဤနေရာတွင် အောက်ပါအချက်များကိုသာ <b>Closing အချိန်</b> ဖြည့်ပါ။</p>
+  </div>
+  <div class="card">
+    <div class="field"><label>Customer Walk-in<small>ယနေ့ ဆိုင်ထဲဝင်လာသော Customer စုစုပေါင်း</small></label>
+      <div class="stepper"><button type="button" data-step="walkin" data-d="-1">−</button><input type="number" inputmode="numeric" min="0" id="f_walkin"><button type="button" data-step="walkin" data-d="1">+</button></div></div>
+    <div class="field"><label>Customer Follow-up<small>ဖုန်း/Message ဖြင့် ဆက်သွယ်ခဲ့သော Customer (အနည်းဆုံး 5)</small></label>
+      <div class="stepper"><button type="button" data-step="followup" data-d="-1">−</button><input type="number" inputmode="numeric" min="0" id="f_followup"><button type="button" data-step="followup" data-d="1">+</button></div></div>
+    <div class="field"><label>Customer Complaints</label>
+      <div class="stepper"><button type="button" data-step="complaints" data-d="-1">−</button><input type="number" inputmode="numeric" min="0" id="f_complaints"><button type="button" data-step="complaints" data-d="1">+</button></div></div>
+    <div class="field"><label>Stock-out<small>Customer တောင်းပြီး ဆိုင်တွင် မရှိသော item အရေအတွက်</small></label>
+      <div class="stepper"><button type="button" data-step="stockout" data-d="-1">−</button><input type="number" inputmode="numeric" min="0" id="f_stockout"><button type="button" data-step="stockout" data-d="1">+</button></div></div>
+    <div class="field"><label>Stock-out item အမည်များ<small>Model / Color / Storage</small></label><textarea id="f_stockoutNote" placeholder="ဥပမာ – Galaxy A17 8/256 Black"></textarea></div>
+  </div>
+  <div class="card">
+    <div class="field"><label>1. Today's Biggest Problem? <span style="color:var(--bad)">*</span></label><textarea id="f_q1"></textarea></div>
+    <div class="field"><label>2. What Did You Do to Solve It?</label><textarea id="f_q2"></textarea></div>
+    <div class="field"><label>3. What Will You Improve Tomorrow?</label><textarea id="f_q3"></textarea></div>
+  </div>
+  <div class="sticky"><button class="btn" id="btnSave">📤 Submit to GM</button></div>
+  <button class="btn sec" id="btnCopy">📋 Viber စာအဖြစ် Copy</button>
+  <div class="card" style="margin-top:12px"><h2>နောက်ဆုံး ၇ ရက်</h2><table id="hist"></table></div>
+</section>
+
+<section class="tab" id="tab-chk">
+  <div class="card">
+    <h2>Daily Checklist – <span id="chkDate"></span></h2>
+    <div class="bar"><span id="chkBar" style="width:0"></span></div><p class="muted" id="chkPct"></p>
+    <div id="chkList"></div>
+    <p class="muted">✔ ထိုးတိုင်း GM ထံ အလိုအလျောက် ရောက်သည်။</p>
+  </div>
+</section>
+
+<section class="tab" id="tab-sch">
+  <div class="card"><h2>Daily Working Schedule</h2>
+    <table>
+      <tr><th>Time</th><th>Task</th><th>Who</th></tr>
+      <tr><td>9:00</td><td>Shop Opening & Cleaning</td><td>All</td></tr>
+      <tr><td>9:15</td><td>Yesterday Sales Review</td><td>In-charge</td></tr>
+      <tr><td>9:30</td><td>Today's Target & Task Assignment</td><td>In-charge</td></tr>
+      <tr><td>10:00</td><td>Product Display Check</td><td>Staff 1</td></tr>
+      <tr><td>11:00</td><td>Customer Handling</td><td>All</td></tr>
+      <tr><td>1:00 PM</td><td>Midday Sales Update (GM ထံ)</td><td>In-charge</td></tr>
+      <tr><td>2:00 PM</td><td>Customer Follow-up</td><td>Staff 2</td></tr>
+      <tr><td>3:00 PM</td><td>Social Media Content (FB/TikTok) – အနည်းဆုံး 3 ခု</td><td>Assigned</td></tr>
+      <tr><td>4:00 PM</td><td>Stock Availability Check</td><td>In-charge</td></tr>
+      <tr><td>5:00 PM</td><td>Sales Progress Review</td><td>In-charge</td></tr>
+      <tr><td>Closing</td><td>Daily Report Submit & Tomorrow Plan</td><td>In-charge</td></tr>
+    </table>
+  </div>
+  <div class="card"><h2>Role Allocation</h2>
+    <div class="pillar"><b>BRANCH IN-CHARGE</b> – Team Leader • Sales Monitoring • Reporting • Stock check • Task assignment</div>
+    <div class="pillar"><b>STAFF 1</b> – Sales & Customer Service: Phone demonstration, closing, upselling</div>
+    <div class="pillar"><b>STAFF 2</b> – Follow-up & Marketing: Social content, customer contact, accessories selling</div>
+    <p class="muted">Customer ဝင်လာချိန်တွင် ဝန်ထမ်းအားလုံး အရောင်းလုပ်နိုင်ရမည်။</p>
+  </div>
+  <div class="card"><h2>In-charge ၏ လုပ်ပိုင်ခွင့်</h2>
+    <table>
+      <tr><td>Sales Target</td><td>လိုက်နာ / နေ့စဉ် Selling activity စီစဉ်</td></tr>
+      <tr><td>Promotion</td><td>GM အတည်ပြုထားသည်ကို အကောင်အထည်ဖော်</td></tr>
+      <tr><td>Pricing / Discount</td><td>သတ်မှတ်ဈေးအတိုင်း ရောင်း (Discount = GM ခွင့်ပြုချက်)</td></tr>
+      <tr><td>Customer</td><td>ပုံမှန်ကိစ္စ ကိုင်တွယ် / အရေးကြီးကိစ္စ GM ထံတင်ပြ</td></tr>
+      <tr><td>Staff</td><td>Task ခွဲဝေ၊ အချိန်ဇယားစီစဉ်</td></tr>
+      <tr><td>Marketing</td><td>Content လုပ် (GM Direction အတိုင်း)</td></tr>
+      <tr><td>Stock</td><td>Stock စစ်ဆေး၊ လိုအပ်ချက် Report</td></tr>
+    </table>
+  </div>
+  <div class="card"><h2>Weekly Meeting မေးခွန်း ၃ ခု</h2>
+    <ol><li>What was your biggest problem last week?</li><li>What action did you take?</li><li>What will you do differently next week?</li></ol>
+  </div>
+</section>
+
+<section class="tab" id="tab-trn">
+  <div class="card"><h2>4-Week Retail Team Leader Program</h2>
+    <p class="muted">Explain → Demonstrate → Practice → Review</p>
+    <div id="weeks"></div>
+  </div>
+</section>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const TASKS=['Shop opening အချိန်မီပြီးစီးခြင်း','Phone နှင့် Accessories Display စစ်ဆေးခြင်း',"Today's Sales Target သတ်မှတ်ခြင်း",'Staff တစ်ယောက်ချင်းစီကို Task ခွဲပေးခြင်း','Customer တိုင်းကို Product Demonstration ပြုလုပ်ခြင်း','Customer Follow-up အနည်းဆုံး 5 ဦး','Social Media Content အနည်းဆုံး 3 ခု','Stock လိုအပ်ချက်နှင့် Out-of-stock စစ်ဆေးခြင်း','Daily Report Submit လုပ်ခြင်း','Tomorrow Action Plan ပြင်ဆင်ခြင်း'];
+const WEEKS=[['Week 1 – Basic Shop Management',['Opening / Closing Procedures','Daily Target Understanding','Staff Task Assignment','Shop Discipline','Daily Reporting'],'Daily Task Execution'],['Week 2 – Sales & Customer Handling',['Customer Greeting','Customer Needs Analysis','Product Demonstration','Objection Handling','Closing Sales'],'Role-play with GM'],['Week 3 – Product & Business Knowledge',['Phone Specifications','Price Comparison','Phone + Accessories Bundling','Stock Management','Competitor Observation'],'Product Knowledge Test'],['Week 4 – Leadership & Problem Solving',['Staff Motivation','Conflict Handling','Problem Identification','Decision Making','Action Plan Preparation'],'Branch Performance Presentation']];
+const NUM=['walkin','followup','complaints','stockout'],TXT=['stockoutNote','q1','q2','q3'];
+const TK='mk_ic_token',PQ='mk_ic_pending';
+let D={branch:null,reports:{},checklist:{}};
+const $=id=>document.getElementById(id);
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}}
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2600)}
+function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function iso(d){return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10)}
+function addDays(s,n){const d=new Date(s+'T00:00:00');d.setDate(d.getDate()+n);return iso(d)}
+function setSync(t){$('sync').textContent=t}
+
+async function api(path,opt={}){const r=await fetch('/api/'+path,{...opt,headers:{'content-type':'application/json',authorization:'Bearer '+(ls(TK)||'')}});
+  const j=await r.json().catch(()=>({}));if(r.status===401){logout();throw new Error('Login ပြန်ဝင်ပါ')}if(!r.ok)throw new Error(j.error||('Error '+r.status));return j}
+
+/* offline queue: if network fails, keep and retry */
+function pending(){try{return JSON.parse(ls(PQ)||'{}')}catch(e){return{}}}
+function queue(date,part){const p=pending();p[date]={...(p[date]||{}),...part};ls(PQ,JSON.stringify(p))}
+async function flush(){const p=pending();const ks=Object.keys(p);if(!ks.length)return true;setSync('⏳ Sending…');
+  for(const d of ks){try{await api('ic/save',{method:'POST',body:JSON.stringify({date:d,...p[d]})});const q=pending();delete q[d];ls(PQ,JSON.stringify(q))}catch(e){setSync('⚠️ Offline – မပို့ရသေးပါ ('+Object.keys(pending()).length+')');return false}}
+  setSync('✅ GM ထံ ရောက်ပြီး');return true}
+async function send(date,part){queue(date,part);return flush()}
+
+function fill(){const r=D.reports[$('selDate').value]||{};NUM.concat(TXT).forEach(f=>$('f_'+f).value=r[f]??'')}
+function collect(){const r={};NUM.forEach(f=>r[f]=$('f_'+f).value===''?0:Math.max(0,parseInt($('f_'+f).value)||0));TXT.forEach(f=>r[f]=$('f_'+f).value.trim());return r}
+function chkPct(d){const c=D.checklist[d];return c?c.filter(Boolean).length/TASKS.length:0}
+function renderHist(){const a=[];for(let i=0;i<7;i++)a.push(addDays($('selDate').value,-i));
+  $('hist').innerHTML='<tr><th>Date</th><th>Report</th><th>Checklist</th><th>Walk-in</th></tr>'+a.map(d=>{const r=D.reports[d];return `<tr><td>${d.slice(5)}</td><td>${r&&r.q1?'<span class="pill p-ok">Sent</span>':'<span class="pill p-bad">Pending</span>'}</td><td>${Math.round(chkPct(d)*100)}%</td><td>${r?r.walkin:'–'}</td></tr>`}).join('')}
+function renderChk(){const d=$('selDate').value;$('chkDate').textContent=d;const c=D.checklist[d]||[];
+  $('chkList').innerHTML=TASKS.map((t,i)=>`<label class="task ${c[i]?'done':''}"><input type="checkbox" data-i="${i}" ${c[i]?'checked':''}><span>${i+1}. ${t}</span></label>`).join('');
+  const p=chkPct(d);$('chkBar').style.width=p*100+'%';$('chkPct').textContent=Math.round(p*100)+'% completed';
+  $('chkList').querySelectorAll('input').forEach(cb=>cb.onchange=()=>{D.checklist[d]=D.checklist[d]||Array(TASKS.length).fill(false);D.checklist[d][+cb.dataset.i]=cb.checked;renderChk();renderHist();send(d,{checklist:D.checklist[d]})})}
+function renderAll(){fill();renderChk();renderHist()}
+
+async function start(){try{const j=await api('ic/data');D=j;
+    $('loginView').classList.add('hidden');$('appView').classList.remove('hidden');
+    $('hBranch').textContent=j.branch.name;$('hName').textContent=j.branch.incharge||'Branch In-charge';document.title='MK – '+j.branch.name;
+    $('tgt').textContent=Number(j.branch.dailyTarget).toLocaleString('en-US',{maximumFractionDigits:2});
+    if(!$('selDate').value)$('selDate').value=iso(new Date());renderAll();flush()}
+  catch(e){$('loginView').classList.remove('hidden');$('appView').classList.add('hidden');if(ls(TK))$('loginErr').textContent=e.message}}
+function logout(){ls(TK,null);$('appView').classList.add('hidden');$('loginView').classList.remove('hidden')}
+
+$('btnLogin').onclick=async()=>{const pin=$('pin').value.trim();if(!pin)return;$('btnLogin').disabled=true;$('loginErr').textContent='';
+  try{const r=await fetch('/api/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({pin})});const j=await r.json();
+    if(!r.ok)throw new Error(j.error||'Login failed');if(j.role!=='branch'){location.href='/gm.html';return}ls(TK,j.token);$('pin').value='';await start()}
+  catch(e){$('loginErr').textContent=e.message}$('btnLogin').disabled=false};
+$('pin').onkeydown=e=>{if(e.key==='Enter')$('btnLogin').click()};
+$('btnLogout').onclick=()=>{if(confirm('Logout လုပ်မလား?'))logout()};
+$('selDate').onchange=renderAll;
+$('nav').querySelectorAll('button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));$('tab-'+b.dataset.tab).classList.add('active');window.scrollTo(0,0)});
+document.querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{const i=$('f_'+b.dataset.step);i.value=Math.max(0,(parseInt(i.value)||0)+(+b.dataset.d))});
+$('btnSave').onclick=async()=>{const d=$('selDate').value,r=collect();if(!r.q1){toast("Today's Biggest Problem ကို မဖြစ်မနေ ဖြေပါ");$('f_q1').focus();return}
+  $('btnSave').disabled=true;D.reports[d]=r;renderHist();const ok=await send(d,{report:r});$('btnSave').disabled=false;
+  toast(ok?'✅ GM ထံ ပို့ပြီးပါပြီ':'⚠️ Internet မရပါ — သိမ်းထားပြီး လိုင်းရတာနဲ့ ပို့ပေးမည်')};
+$('btnCopy').onclick=async()=>{const d=$('selDate').value,r=D.reports[d]||collect();
+  const txt=`📱 ${D.branch.name} – Daily Report (${d})\nIn-charge: ${D.branch.incharge}\nWalk-in: ${r.walkin}\nFollow-up: ${r.followup}\nComplaints: ${r.complaints}\nStock-out: ${r.stockout}${r.stockoutNote?' ('+r.stockoutNote+')':''}\nChecklist: ${Math.round(chkPct(d)*100)}%\n1. Problem: ${r.q1}\n2. Action: ${r.q2}\n3. Tomorrow: ${r.q3}`;
+  try{await navigator.clipboard.writeText(txt);toast('Copy ပြီး — Viber တွင် Paste လုပ်ပါ')}catch(e){prompt('Copy:',txt)}};
+window.addEventListener('online',flush);
+$('weeks').innerHTML=WEEKS.map(w=>`<div class="pillar"><b>${w[0]}</b><ul>${w[1].map(t=>'<li>'+t+'</li>').join('')}</ul><span class="muted">Assessment: ${w[2]}</span></div>`).join('');
+if(ls(TK))start();
+</script>
+</body>
+</html>
